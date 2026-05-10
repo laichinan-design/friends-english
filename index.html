@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Friends 英語學習 | English with Friends</title>
+  <style>
+    :root {
+      --orange: #FF6B35;
+      --purple: #6B4FA0;
+      --yellow: #F7C948;
+      --cream: #FFF8F0;
+      --dark: #2C2C2C;
+      --light-purple: #EDE7F6;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Georgia', serif;
+      background: var(--cream);
+      color: var(--dark);
+    }
+
+    header {
+      background: var(--purple);
+      color: white;
+      text-align: center;
+      padding: 2.5rem 1rem;
+    }
+
+    header h1 { font-size: 2.5rem; letter-spacing: 2px; }
+    header .subtitle { color: var(--yellow); margin-top: 0.5rem; font-size: 1.05rem; }
+
+    nav {
+      background: var(--orange);
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.75rem;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      transition: background 0.2s;
+      font-size: 0.95rem;
+    }
+
+    nav a:hover { background: rgba(255,255,255,0.2); }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+
+    .section {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    .section h2 {
+      color: var(--purple);
+      border-bottom: 3px solid var(--orange);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+      font-size: 1.4rem;
+    }
+
+    /* Listening Tips */
+    .tip-item {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.2rem;
+      align-items: flex-start;
+    }
+
+    .tip-num {
+      background: var(--orange);
+      color: white;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      flex-shrink: 0;
+      font-size: 1rem;
+    }
+
+    .tip-text { line-height: 1.75; }
+    .tip-text strong { color: var(--purple); }
+
+    /* Phrase Cards */
+    .phrase-card {
+      background: var(--light-purple);
+      border-left: 4px solid var(--purple);
+      border-radius: 8px;
+      padding: 1.2rem 1.5rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .phrase-card .quote {
+      font-size: 1.25rem;
+      font-style: italic;
+      color: var(--purple);
+      margin-bottom: 0.3rem;
+    }
+
+    .phrase-card .character {
+      font-size: 0.85rem;
+      color: var(--orange);
+      font-weight: bold;
+      margin-bottom: 0.75rem;
+    }
+
+    .phrase-card .grammar-note {
+      font-size: 0.92rem;
+      line-height: 1.7;
+    }
+
+    .phrase-card .translation {
+      font-size: 0.88rem;
+      color: #666;
+      margin-top: 0.5rem;
+      font-style: italic;
+    }
+
+    .tag {
+      display: inline-block;
+      background: var(--orange);
+      color: white;
+      font-size: 0.72rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 12px;
+      margin-right: 0.3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Quiz */
+    .score-board {
+      background: var(--purple);
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+    }
+
+    .score-board span { font-size: 1.6rem; font-weight: bold; color: var(--yellow); }
+
+    .quiz-question {
+      background: #f9f9f9;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid #eee;
+    }
+
+    .quiz-context {
+      font-size: 0.88rem;
+      color: #888;
+      margin-bottom: 0.4rem;
+    }
+
+    .quiz-sentence {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      line-height: 1.8;
+    }
+
+    .options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+    }
+
+    .option-btn {
+      padding: 0.75rem 1rem;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      background: white;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: all 0.15s;
+      text-align: left;
+      font-family: 'Georgia', serif;
+    }
+
+    .option-btn:hover:not(:disabled) { border-color: var(--purple); background: var(--light-purple); }
+    .option-btn.correct { border-color: #4CAF50; background: #E8F5E9; color: #2E7D32; font-weight: bold; }
+    .option-btn.wrong { border-color: #F44336; background: #FFEBEE; color: #C62828; }
+
+    .feedback {
+      margin-top: 0.85rem;
+      padding: 0.85rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      display: none;
+    }
+
+    .feedback.show { display: block; }
+    .feedback.correct { background: #E8F5E9; color: #2E7D32; }
+    .feedback.wrong { background: #FFEBEE; color: #C62828; }
+
+    .reset-btn {
+      background: var(--orange);
+      color: white;
+      border: none;
+      padding: 0.8rem 2rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      font-family: 'Georgia', serif;
+      transition: opacity 0.2s;
+    }
+
+    .reset-btn:hover { opacity: 0.85; }
+
+    /* Grammar Table */
+    .pattern-table { width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: 0.92rem; }
+    .pattern-table th { background: var(--purple); color: white; padding: 0.85rem; text-align: left; }
+    .pattern-table td { padding: 0.85rem; border-bottom: 1px solid #eee; line-height: 1.5; }
+    .pattern-table tr:nth-child(even) td { background: var(--light-purple); }
+
+    /* Character guide */
+    .char-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .char-card {
+      background: var(--light-purple);
+      border-radius: 10px;
+      padding: 1.2rem;
+      border-top: 4px solid var(--purple);
+    }
+
+    .char-card h3 { color: var(--purple); margin-bottom: 0.5rem; }
+    .char-card p { font-size: 0.88rem; line-height: 1.6; }
+    .char-level {
+      display: inline-block;
+      background: var(--yellow);
+      color: var(--dark);
+      font-size: 0.75rem;
+      font-weight: bold;
+      padding: 0.2rem 0.6rem;
+      border-radius: 12px;
+      margin-bottom: 0.5rem;
+    }
+
+    footer {
+      background: var(--dark);
+      color: #aaa;
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 600px) {
+      .options { grid-template-columns: 1fr; }
+      header h1 { font-size: 1.8rem; }
+      .section { padding: 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>☕ Friends 英語學習</h1>
+  <p class="subtitle">用美劇練聽力・學文法・說道地英語</p>
+</header>
+
+<nav>
+  <a href="#listening">🎧 聽力技巧</a>
+  <a href="#characters">🎭 角色指南</a>
+  <a href="#phrases">💬 經典台詞</a>
+  <a href="#quiz">✏️ 文法測驗</a>
+  <a href="#patterns">📚 常見句型</a>
+</nav>
+
+<div class="container">
+
+  <!-- Listening Tips -->
+  <div class="section" id="listening">
+    <h2>🎧 用 Friends 練聽力的方法</h2>
+
+    <div class="tip-item">
+      <div class="tip-num">1</div>
+      <div class="tip-text">
+        <strong>三輪觀看法</strong><br>
+        第一遍看中文字幕了解劇情；第二遍只看英文字幕，注意發音與拼字對應；第三遍不看字幕，純粹用耳朵聽。每集約 22 分鐘，非常適合這個練習。
+      </div>
+    </div>
+
+    <div class="tip-item">
+      <div class="tip-num">2</div>
+      <div class="tip-text">
+        <strong>跟讀練習（Shadowing）</strong><br>
+        選一段喜歡的場景，暫停後模仿角色的語調和速度大聲唸出來。Friends 角色說話節奏自然，特別適合練習日常口語的韻律。
+      </div>
+    </div>
+
+    <div class="tip-item">
+      <div class="tip-num">3</div>
+      <div class="tip-text">
+        <strong>注意連音與縮讀</strong><br>
+        美式口語常把單字連在一起。例如：<em>"gonna"</em>（going to）、<em>"wanna"</em>（want to）、<em>"kinda"</em>（kind of）、<em>"How ya doin'?"</em>（How are you doing?）。聽到這些要習慣，不要分開拆字。
+      </div>
+    </div>
+
+    <div class="tip-item">
+      <div class="tip-num">4</div>
+      <div class="tip-text">
+        <strong>每集選一段精聽</strong><br>
+        不用整集精聽，選 2～3 分鐘的場景反覆聽。先不看字幕寫下聽到的內容，再對照字幕確認，找出漏聽的字。
+      </div>
+    </div>
+
+    <div class="tip-item">
+      <div class="tip-num">5</div>
+      <div class="tip-text">
+        <strong>記錄俚語和片語</strong><br>
+        Friends 充滿 90 年代美國日常口語，如 <em>"That's so not cool"</em>、<em>"Oh snap!"</em>、<em>"I'm so over it"</em>。準備筆記本記下不懂的表達，這些都是真實生活中用得到的語言。
+      </div>
+    </div>
+  </div>
+
+  <!-- Character Guide -->
+  <div class="section" id="characters">
+    <h2>🎭 六人組學習指南</h2>
+    <p style="color:#666; margin-bottom:1rem;">每個角色有不同的說話風格，選對角色跟讀效果更好。</p>
+
+    <div class="char-grid">
+      <div class="char-card">
+        <div class="char-level">初學推薦</div>
+        <h3>Joey Tribbiani</h3>
+        <p>用詞簡單直接，常說短句。文法不總是標準，反而很接近真實口語。最適合英語初學者跟讀，不會太難也不無聊。</p>
+      </div>
+      <div class="char-card">
+        <div class="char-level">初學推薦</div>
+        <h3>Phoebe Buffay</h3>
+        <p>說話天馬行空但句子不複雜，常用誇張語氣詞。她的發音清楚，語速適中，很適合練習自然的情緒表達。</p>
+      </div>
+      <div class="char-card">
+        <div class="char-level">中級推薦</div>
+        <h3>Rachel Green</h3>
+        <p>典型的美式中產英語，語速適中，句型多變。從 Season 1 到最後語言能力明顯成長，適合一起「成長」的學習者。</p>
+      </div>
+      <div class="char-card">
+        <div class="char-level">中級推薦</div>
+        <h3>Monica Geller</h3>
+        <p>說話有條理、用詞精確，常用清楚的句子結構解釋事情。適合想學「說清楚講明白」英語表達方式的學習者。</p>
+      </div>
+      <div class="char-card">
+        <div class="char-level">進階推薦</div>
+        <h3>Chandler Bing</h3>
+        <p>充滿反諷和雙關語，語速較快，常用複雜的語氣轉折。聽懂 Chandler 的笑點代表你的英語幽默感達到進階。</p>
+      </div>
+      <div class="char-card">
+        <div class="char-level">進階推薦</div>
+        <h3>Ross Geller</h3>
+        <p>用詞正式（他是博士），喜歡長篇解釋。語法最標準，也最接近學術英語。適合想提升書面英語和正式表達的學習者。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Classic Phrases -->
+  <div class="section" id="phrases">
+    <h2>💬 經典台詞・文法解析</h2>
+
+    <div class="phrase-card">
+      <div class="quote">"How you doin'?"</div>
+      <div class="character">— Joey Tribbiani</div>
+      <div class="grammar-note">
+        <span class="tag">縮讀</span><span class="tag">非正式問候</span><br>
+        <strong>文法：</strong>"doin'" 是 "doing" 的口語縮讀（省略結尾 g）。完整正式說法是 "How are you doing?"。日常對話常省略 "are"，變成 "How you doing?"。這是美式英語非常自然的問候方式，語氣比 "How are you?" 更隨性親切。
+      </div>
+      <div class="translation">你好嗎？（Joey 的招牌搭訕台詞）</div>
+    </div>
+
+    <div class="phrase-card">
+      <div class="quote">"We were on a break!"</div>
+      <div class="character">— Ross Geller</div>
+      <div class="grammar-note">
+        <span class="tag">過去式</span><span class="tag">情緒強調</span><br>
+        <strong>文法：</strong>"were on a break" 用過去式描述當時持續的狀態。"be on a break" 是片語，意思是「暫時分開、休息期」。加感嘆號強調情緒。這句話也說明英語中「狀態動詞」常用 be 動詞而非一般動詞。
+      </div>
+      <div class="translation">我們當時是分開的！（Ross 的經典自辯台詞）</div>
+    </div>
+
+    <div class="phrase-card">
+      <div class="quote">"Could this BE any more obvious?"</div>
+      <div class="character">— Chandler Bing</div>
+      <div class="grammar-note">
+        <span class="tag">反問句</span><span class="tag">諷刺語氣</span><br>
+        <strong>文法：</strong>"Could + 主詞 + be any more + 形容詞?" 是 Chandler 的招牌諷刺句型，表示「這還能更...嗎？」（言下之意：已經夠明顯了）。助動詞 could 後接原形動詞 be。這類反問句在英語幽默中非常常見，語調上揚是關鍵。
+      </div>
+      <div class="translation">這難道還不夠明顯嗎？（Chandler 的諷刺語氣）</div>
+    </div>
+
+    <div class="phrase-card">
+      <div class="quote">"I'll be there for you."</div>
+      <div class="character">— 主題曲 / 六人組</div>
+      <div class="grammar-note">
+        <span class="tag">未來式</span><span class="tag">承諾表達</span><br>
+        <strong>文法：</strong>"will + 原形動詞" 表達未來的承諾或意願。"be there for someone" 是固定片語，意思是「支持某人、在某人身邊」。比 "support you" 更口語自然。這個片語在日常英語中非常實用，例如 "I'm always here for you."
+      </div>
+      <div class="translation">我會在你身邊。（劇集主題曲，也是六人友情的核心）</div>
+    </div>
+
+    <div class="phrase-card">
+      <div class="quote">"You know what? Forget it."</div>
+      <div class="character">— 各角色常用</div>
+      <div class="grammar-note">
+        <span class="tag">轉折開場白</span><span class="tag">口語表達</span><br>
+        <strong>文法：</strong>"You know what?" 是口語中的轉折開場白，用來引出一個決定或想法的改變，類似中文的「你知道嗎，算了」。"Forget it" 是口語片語，表示「算了、不提了」。這類開場白（discourse markers）在英語對話中很重要，讓說話更自然。
+      </div>
+      <div class="translation">你知道嗎？算了。（表示決定改變心意）</div>
+    </div>
+
+    <div class="phrase-card">
+      <div class="quote">"I have no idea what you're talking about."</div>
+      <div class="character">— 各角色常用</div>
+      <div class="grammar-note">
+        <span class="tag">否定片語</span><span class="tag">強調</span><br>
+        <strong>文法：</strong>"have no idea" 是固定片語，比 "I don't know" 語氣更強，強調「完全不知道」。後面接 "what/where/how + 子句" 作為受詞。注意不能說 "have not idea"，必須是 "have no idea"。這是英語中非常常見的否定強調表達。
+      </div>
+      <div class="translation">我完全不知道你在說什麼。</div>
+    </div>
+  </div>
+
+  <!-- Grammar Quiz -->
+  <div class="section" id="quiz">
+    <h2>✏️ 文法測驗</h2>
+    <p style="margin-bottom:1rem; color:#666;">根據 Friends 的情境，選出正確答案完成句子。</p>
+
+    <div class="score-board">
+      得分：<span id="score">0</span> / <span id="total">0</span>
+    </div>
+
+    <div id="quiz-container"></div>
+
+    <button class="reset-btn" onclick="resetQuiz()">🔄 重新練習</button>
+  </div>
+
+  <!-- Grammar Patterns -->
+  <div class="section" id="patterns">
+    <h2>📚 Friends 常見口語句型</h2>
+
+    <table class="pattern-table">
+      <thead>
+        <tr>
+          <th>句型</th>
+          <th>Friends 風格例句</th>
+          <th>說明</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>be supposed to</strong></td>
+          <td>"You were supposed to be here at 8."</td>
+          <td>應該要...（預期或義務）</td>
+        </tr>
+        <tr>
+          <td><strong>I can't believe...</strong></td>
+          <td>"I can't believe you said that!"</td>
+          <td>我不敢相信...（表達驚訝）</td>
+        </tr>
+        <tr>
+          <td><strong>What's the deal with...?</strong></td>
+          <td>"What's the deal with you two?"</td>
+          <td>...到底是怎麼回事？（口語追問）</td>
+        </tr>
+        <tr>
+          <td><strong>It's not like...</strong></td>
+          <td>"It's not like I planned this."</td>
+          <td>又不是說...（辯解或說明）</td>
+        </tr>
+        <tr>
+          <td><strong>How come...?</strong></td>
+          <td>"How come you never told me?"</td>
+          <td>怎麼會...？（比 Why 更口語）</td>
+        </tr>
+        <tr>
+          <td><strong>I'm so + 形容詞</strong></td>
+          <td>"I'm so over it." / "I'm so done."</td>
+          <td>我真的太...了（強調情緒狀態）</td>
+        </tr>
+        <tr>
+          <td><strong>That's so + 形容詞</strong></td>
+          <td>"That's so not okay."</td>
+          <td>那真的太...了（90年代流行說法）</td>
+        </tr>
+        <tr>
+          <td><strong>Could you...?</strong></td>
+          <td>"Could you speak any louder?"</td>
+          <td>委婉請求或諷刺反問</td>
+        </tr>
+        <tr>
+          <td><strong>I mean...</strong></td>
+          <td>"I mean, come on."</td>
+          <td>我的意思是...（口語填充詞，增加語氣）</td>
+        </tr>
+        <tr>
+          <td><strong>Fine by me</strong></td>
+          <td>"If that's what you want, fine by me."</td>
+          <td>我沒意見（表示接受或妥協）</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<footer>
+  <p>本網站為英語學習輔助工具，內容僅供教育參考。</p>
+  <p style="margin-top:0.5rem; color:#666;">使用 Claude Code 製作 ☕</p>
+</footer>
+
+<script>
+  const quizData = [
+    {
+      context: "Joey 想用招牌方式問候某人：",
+      sentence: '"___ you doin\'?"',
+      options: ["What are", "How are", "How", "Where are"],
+      answer: 2,
+      explanation: '"How you doin\'?" 是 "How are you doing?" 的口語縮減，省略了 "are"，是 Joey 最著名的招牌問候語。'
+    },
+    {
+      context: "Ross 在爭論中想強調「我們當時是分開的」：",
+      sentence: '"We ___ on a break!"',
+      options: ["are", "were", "was", "will be"],
+      answer: 1,
+      explanation: '描述過去的狀態要用過去式。"we" 搭配 "were"（不是 was）。"We were on a break" 是 Ross 最著名的自辯台詞。'
+    },
+    {
+      context: "Monica 想說「你應該要 8 點到這裡」：",
+      sentence: '"You ___ supposed to be here at 8."',
+      options: ["are", "were", "will be", "had"],
+      answer: 1,
+      explanation: '"be supposed to" 表示預期或義務。因為是過去的時間點，所以用 "were supposed to"，而不是現在式 "are"。'
+    },
+    {
+      context: "Chandler 想諷刺說「這還能更尷尬嗎？」：",
+      sentence: '"Could this ___ any more awkward?"',
+      options: ["is", "was", "be", "been"],
+      answer: 2,
+      explanation: '助動詞 could 後面一定接原形動詞，所以是 "be"。"Could this be any more + 形容詞?" 是 Chandler 的招牌諷刺句型。'
+    },
+    {
+      context: "Phoebe 想說「我完全不知道你在說什麼」：",
+      sentence: '"I have ___ idea what you\'re talking about."',
+      options: ["not", "no", "any", "none"],
+      answer: 1,
+      explanation: '"have no idea" 是固定片語，表示完全不知道。注意不能說 "have not idea"，正確用法是 "have no idea"。'
+    },
+    {
+      context: "Rachel 想問「你怎麼都沒告訴我？」（口語方式）：",
+      sentence: '"___ come you never told me?"',
+      options: ["Why", "What", "How", "Where"],
+      answer: 2,
+      explanation: '"How come...?" 是口語中常見的問法，意思和 "Why...?" 相同，但更口語、更自然，Friends 角色非常常用。'
+    }
+  ];
+
+  let score = 0;
+  let answered = [];
+
+  function renderQuiz() {
+    answered = new Array(quizData.length).fill(false);
+    score = 0;
+    document.getElementById('score').textContent = 0;
+    document.getElementById('total').textContent = quizData.length;
+
+    const container = document.getElementById('quiz-container');
+    container.innerHTML = '';
+
+    quizData.forEach((q, idx) => {
+      const div = document.createElement('div');
+      div.className = 'quiz-question';
+      div.innerHTML = `
+        <div class="quiz-context">${q.context}</div>
+        <div class="quiz-sentence"><strong>Q${idx + 1}.</strong> ${q.sentence}</div>
+        <div class="options">
+          ${q.options.map((opt, i) => `
+            <button class="option-btn" onclick="checkAnswer(${idx}, ${i}, this)" id="q${idx}-opt${i}">
+              ${String.fromCharCode(65 + i)}. ${opt}
+            </button>
+          `).join('')}
+        </div>
+        <div class="feedback" id="feedback-${idx}"></div>
+      `;
+      container.appendChild(div);
+    });
+  }
+
+  function checkAnswer(qIdx, optIdx, btn) {
+    if (answered[qIdx]) return;
+    answered[qIdx] = true;
+
+    const q = quizData[qIdx];
+    const feedback = document.getElementById(`feedback-${qIdx}`);
+    const allBtns = quizData[qIdx].options.map((_, i) =>
+      document.getElementById(`q${qIdx}-opt${i}`)
+    );
+
+    allBtns.forEach(b => { if (b) b.disabled = true; });
+
+    if (optIdx === q.answer) {
+      btn.classList.add('correct');
+      feedback.className = 'feedback correct show';
+      feedback.innerHTML = '✅ 正確！' + q.explanation;
+      score++;
+    } else {
+      btn.classList.add('wrong');
+      const correctBtn = document.getElementById(`q${qIdx}-opt${q.answer}`);
+      if (correctBtn) correctBtn.classList.add('correct');
+      feedback.className = 'feedback wrong show';
+      feedback.innerHTML = '❌ 答錯了。' + q.explanation;
+    }
+
+    document.getElementById('score').textContent = score;
+  }
+
+  function resetQuiz() {
+    renderQuiz();
+  }
+
+  renderQuiz();
+</script>
+
+</body>
+</html>
