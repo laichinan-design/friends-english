@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>S1E1 The Pilot | Friends 英語學習</title>
+  <style>
+    :root {
+      --orange: #FF6B35;
+      --purple: #6B4FA0;
+      --yellow: #F7C948;
+      --cream: #FFF8F0;
+      --dark: #2C2C2C;
+      --light-purple: #EDE7F6;
+      --green: #4CAF50;
+      --light-green: #E8F5E9;
+      --red: #F44336;
+      --light-red: #FFEBEE;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Georgia', serif;
+      background: var(--cream);
+      color: var(--dark);
+      line-height: 1.7;
+    }
+
+    header {
+      background: var(--purple);
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    header .ep-label {
+      background: var(--orange);
+      display: inline-block;
+      padding: 0.3rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      margin-bottom: 0.75rem;
+      letter-spacing: 1px;
+    }
+
+    header h1 { font-size: 2rem; }
+    header .subtitle { color: var(--yellow); margin-top: 0.4rem; }
+
+    nav {
+      background: var(--orange);
+      display: flex;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.6rem;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 0.4rem 0.85rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      transition: background 0.2s;
+    }
+
+    nav a:hover { background: rgba(255,255,255,0.2); }
+    nav .back { background: rgba(255,255,255,0.15); }
+
+    .container { max-width: 920px; margin: 0 auto; padding: 2rem 1rem; }
+
+    .section {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    }
+
+    .section h2 {
+      color: var(--purple);
+      border-bottom: 3px solid var(--orange);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+      font-size: 1.35rem;
+    }
+
+    .section h3 {
+      color: var(--orange);
+      margin: 1.5rem 0 0.75rem;
+      font-size: 1.05rem;
+    }
+
+    /* Watch box */
+    .watch-box {
+      background: var(--light-purple);
+      border-left: 4px solid var(--purple);
+      border-radius: 8px;
+      padding: 1.2rem 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .watch-box strong { color: var(--purple); }
+
+    .stream-links {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-top: 0.75rem;
+    }
+
+    .stream-btn {
+      background: var(--purple);
+      color: white;
+      padding: 0.5rem 1.2rem;
+      border-radius: 20px;
+      font-size: 0.88rem;
+      text-decoration: none;
+      font-weight: bold;
+      transition: opacity 0.2s;
+    }
+
+    .stream-btn:hover { opacity: 0.85; }
+
+    /* Episode summary */
+    .ep-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .ep-stat {
+      background: var(--light-purple);
+      border-radius: 8px;
+      padding: 0.85rem 1rem;
+      text-align: center;
+    }
+
+    .ep-stat .label { font-size: 0.78rem; color: #888; margin-bottom: 0.3rem; }
+    .ep-stat .value { font-size: 1.05rem; font-weight: bold; color: var(--purple); }
+
+    /* Scene cards */
+    .scene-card {
+      border: 1px solid #eee;
+      border-radius: 10px;
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+    }
+
+    .scene-header {
+      background: var(--purple);
+      color: white;
+      padding: 0.85rem 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .scene-time {
+      background: var(--orange);
+      padding: 0.25rem 0.7rem;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    .scene-title { font-size: 1rem; font-weight: bold; }
+
+    .scene-body { padding: 1.2rem 1.5rem; }
+
+    .scene-summary {
+      color: #555;
+      font-size: 0.93rem;
+      margin-bottom: 1rem;
+      line-height: 1.7;
+    }
+
+    /* Quote cards */
+    .quote-card {
+      background: var(--light-purple);
+      border-left: 4px solid var(--purple);
+      border-radius: 0 8px 8px 0;
+      padding: 1rem 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .quote-text {
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--purple);
+      margin-bottom: 0.3rem;
+    }
+
+    .quote-who {
+      font-size: 0.8rem;
+      color: var(--orange);
+      font-weight: bold;
+      margin-bottom: 0.6rem;
+    }
+
+    .quote-analysis { font-size: 0.9rem; line-height: 1.7; }
+    .quote-zh { font-size: 0.85rem; color: #777; margin-top: 0.4rem; font-style: italic; }
+
+    .tag {
+      display: inline-block;
+      background: var(--orange);
+      color: white;
+      font-size: 0.7rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 10px;
+      margin-right: 0.3rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .tag.green { background: var(--green); }
+    .tag.dark { background: #555; }
+
+    /* Vocabulary */
+    .vocab-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 0.85rem;
+    }
+
+    .vocab-item {
+      background: #f9f9f9;
+      border-radius: 8px;
+      padding: 0.9rem 1rem;
+      border-left: 3px solid var(--orange);
+    }
+
+    .vocab-word { font-size: 1rem; font-weight: bold; color: var(--purple); }
+    .vocab-pron { font-size: 0.8rem; color: #888; margin-bottom: 0.3rem; }
+    .vocab-def { font-size: 0.88rem; line-height: 1.6; }
+    .vocab-example { font-size: 0.85rem; color: #666; font-style: italic; margin-top: 0.3rem; }
+
+    /* Listening focus */
+    .listen-item {
+      background: #f9f9f9;
+      border-radius: 8px;
+      padding: 1rem 1.2rem;
+      margin-bottom: 0.85rem;
+      border-left: 3px solid var(--green);
+    }
+
+    .listen-item .timestamp {
+      font-size: 0.78rem;
+      background: var(--green);
+      color: white;
+      padding: 0.15rem 0.55rem;
+      border-radius: 10px;
+      margin-bottom: 0.4rem;
+      display: inline-block;
+    }
+
+    .listen-item .focus-title { font-weight: bold; color: var(--dark); margin-bottom: 0.3rem; }
+    .listen-item .focus-desc { font-size: 0.9rem; color: #555; }
+    .listen-item .sound-tip {
+      font-size: 0.85rem;
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 0.5rem 0.75rem;
+      margin-top: 0.5rem;
+      font-family: monospace;
+    }
+
+    /* Grammar box */
+    .grammar-box {
+      background: var(--light-purple);
+      border-radius: 10px;
+      padding: 1.2rem 1.5rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .grammar-box h4 { color: var(--purple); margin-bottom: 0.6rem; font-size: 1rem; }
+    .grammar-box p { font-size: 0.92rem; line-height: 1.7; }
+
+    .example-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin-top: 0.75rem;
+    }
+
+    .example-good {
+      background: var(--light-green);
+      border-radius: 6px;
+      padding: 0.6rem 0.85rem;
+      font-size: 0.88rem;
+      border-left: 3px solid var(--green);
+    }
+
+    .example-bad {
+      background: var(--light-red);
+      border-radius: 6px;
+      padding: 0.6rem 0.85rem;
+      font-size: 0.88rem;
+      border-left: 3px solid var(--red);
+      text-decoration: line-through;
+      color: #999;
+    }
+
+    /* Quiz */
+    .score-board {
+      background: var(--purple);
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+    }
+
+    .score-board span { font-size: 1.6rem; font-weight: bold; color: var(--yellow); }
+
+    .quiz-question {
+      background: #f9f9f9;
+      border-radius: 8px;
+      padding: 1.4rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid #eee;
+    }
+
+    .quiz-context { font-size: 0.85rem; color: #888; margin-bottom: 0.4rem; }
+    .quiz-sentence { font-size: 1.05rem; margin-bottom: 1rem; line-height: 1.8; }
+
+    .options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.55rem;
+    }
+
+    .option-btn {
+      padding: 0.7rem 1rem;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      background: white;
+      cursor: pointer;
+      font-size: 0.92rem;
+      transition: all 0.15s;
+      text-align: left;
+      font-family: 'Georgia', serif;
+    }
+
+    .option-btn:hover:not(:disabled) { border-color: var(--purple); background: var(--light-purple); }
+    .option-btn.correct { border-color: var(--green); background: var(--light-green); color: #2E7D32; font-weight: bold; }
+    .option-btn.wrong { border-color: var(--red); background: var(--light-red); color: #C62828; }
+
+    .feedback {
+      margin-top: 0.8rem;
+      padding: 0.8rem;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      line-height: 1.65;
+      display: none;
+    }
+
+    .feedback.show { display: block; }
+    .feedback.correct { background: var(--light-green); color: #2E7D32; }
+    .feedback.wrong { background: var(--light-red); color: #C62828; }
+
+    /* Fill in blank */
+    .fill-card {
+      background: #f9f9f9;
+      border-radius: 8px;
+      padding: 1.3rem;
+      margin-bottom: 1.2rem;
+      border: 1px solid #eee;
+    }
+
+    .fill-sentence {
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--purple);
+      margin-bottom: 0.75rem;
+      line-height: 1.8;
+    }
+
+    .fill-input {
+      border: 2px solid #ddd;
+      border-radius: 6px;
+      padding: 0.45rem 0.8rem;
+      font-size: 1rem;
+      font-family: 'Georgia', serif;
+      width: 160px;
+      transition: border-color 0.2s;
+    }
+
+    .fill-input:focus { outline: none; border-color: var(--purple); }
+    .fill-input.correct { border-color: var(--green); background: var(--light-green); }
+    .fill-input.wrong { border-color: var(--red); background: var(--light-red); }
+
+    .fill-check-btn {
+      background: var(--purple);
+      color: white;
+      border: none;
+      padding: 0.5rem 1.2rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: 'Georgia', serif;
+      margin-left: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .fill-feedback { font-size: 0.88rem; margin-top: 0.6rem; display: none; }
+    .fill-feedback.show { display: block; }
+
+    .hint-text { font-size: 0.82rem; color: #888; margin-top: 0.3rem; }
+
+    .reset-btn {
+      background: var(--orange);
+      color: white;
+      border: none;
+      padding: 0.8rem 2rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      font-family: 'Georgia', serif;
+      transition: opacity 0.2s;
+    }
+
+    .reset-btn:hover { opacity: 0.85; }
+
+    footer {
+      background: var(--dark);
+      color: #aaa;
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 620px) {
+      .options { grid-template-columns: 1fr; }
+      .example-row { grid-template-columns: 1fr; }
+      header h1 { font-size: 1.5rem; }
+      .section { padding: 1.2rem; }
+      .scene-body { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="ep-label">Season 1 · Episode 1</div>
+  <h1>☕ "The One Where Monica Gets a Roommate"</h1>
+  <p class="subtitle">分場景學聽力・字彙・文法</p>
+</header>
+
+<nav>
+  <a href="index.html" class="back">← 回首頁</a>
+  <a href="#watch">📺 在哪收看</a>
+  <a href="#vocab">📖 關鍵字彙</a>
+  <a href="#scenes">🎬 分場景學習</a>
+  <a href="#listening">🎧 聽力重點</a>
+  <a href="#grammar">📝 文法焦點</a>
+  <a href="#quiz">✏️ 練習題</a>
+</nav>
+
+<div class="container">
+
+  <!-- Episode Info -->
+  <div class="section">
+    <h2>📋 本集概覽</h2>
+
+    <div class="ep-info">
+      <div class="ep-stat">
+        <div class="label">播出日期</div>
+        <div class="value">1994.09.22</div>
+      </div>
+      <div class="ep-stat">
+        <div class="label">集數長度</div>
+        <div class="value">約 22 分鐘</div>
+      </div>
+      <div class="ep-stat">
+        <div class="label">難度評估</div>
+        <div class="value">★★★☆☆</div>
+      </div>
+      <div class="ep-stat">
+        <div class="label">本集亮點</div>
+        <div class="value">六人初相聚</div>
+      </div>
+    </div>
+
+    <p style="color:#555; font-size:0.93rem;">
+      第一季第一集，也是整個 Friends 宇宙的起點。Rachel 穿著婚紗逃婚出現在 Central Perk，Ross 剛結束第一段婚姻，Monica 接待老朋友 Rachel 搬進來。這集建立了六個角色的基本性格，非常適合用來學習「自我介紹、表達情緒、敘述過去事件」的英語表達。
+    </p>
+
+    <div class="watch-box" id="watch" style="margin-top:1.2rem;">
+      <strong>📺 在哪裡合法收看？</strong><br>
+      <span style="font-size:0.9rem; color:#555;">請在以下平台搜尋「Friends Season 1 Episode 1」：</span>
+      <div class="stream-links">
+        <a href="https://www.max.com" target="_blank" class="stream-btn">Max (美國)</a>
+        <a href="https://www.netflix.com" target="_blank" class="stream-btn">Netflix (部分地區)</a>
+        <a href="https://tv.apple.com" target="_blank" class="stream-btn">Apple TV+</a>
+      </div>
+      <p style="font-size:0.82rem; color:#888; margin-top:0.75rem;">💡 建議先在 Netflix 或 Max 開啟英文字幕，配合本頁學習效果最佳。</p>
+    </div>
+  </div>
+
+  <!-- Key Vocabulary -->
+  <div class="section" id="vocab">
+    <h2>📖 本集關鍵字彙</h2>
+    <p style="color:#666; font-size:0.9rem; margin-bottom:1rem;">這些字彙在第一集中頻繁出現，先熟悉它們，看的時候理解力會大幅提升。</p>
+
+    <div class="vocab-grid">
+      <div class="vocab-item">
+        <div class="vocab-word">runway</div>
+        <div class="vocab-pron">/ˈrʌnweɪ/</div>
+        <div class="vocab-def">逃跑；（婚禮中）落跑。"Runaway bride" = 逃婚新娘。</div>
+        <div class="vocab-example">"She was a runaway bride."</div>
+      </div>
+
+      <div class="vocab-item">
+        <div class="vocab-word">divorce</div>
+        <div class="vocab-pron">/dɪˈvɔːrs/</div>
+        <div class="vocab-def">離婚。動詞也是 divorce。Ross 的核心人生危機。</div>
+        <div class="vocab-example">"My wife and I are getting a divorce."</div>
+      </div>
+
+      <div class="vocab-item">
+        <div class="vocab-word">lesbian</div>
+        <div class="vocab-pron">/ˈlezbɪən/</div>
+        <div class="vocab-def">女同性戀者。Ross 的前妻 Carol 的身份，是本集重要背景。</div>
+        <div class="vocab-example">"She left me for another woman."</div>
+      </div>
+
+      <div class="vocab-item">
+        <div class="vocab-word">spontaneous</div>
+        <div class="vocab-pron">/spɒnˈteɪnɪəs/</div>
+        <div class="vocab-def">自發的、衝動的。形容沒有計劃就行動。</div>
+        <div class="vocab-example">"It was a spontaneous decision."</div>
+      </div>
+
+      <div class="vocab-item">
+        <div class="vocab-word">credit card</div>
+        <div class="vocab-pron">/ˈkredɪt kɑːrd/</div>
+        <div class="vocab-def">信用卡。Rachel 在本集剪掉父親的信用卡，象徵獨立。</div>
+        <div class="vocab-example">"She cut up all her credit cards."</div>
+      </div>
+
+      <div class="vocab-item">
+        <div class="vocab-word">independent</div>
+        <div class="vocab-pron">/ˌɪndɪˈpendənt/</div>
+        <div class="vocab-def">獨立的。本集 Rachel 的成長主題關鍵字。</div>
+        <div class="vocab-example">"I want to be independent."</div>
+      </div>
+
+      <div class="vocab-item">
+        <div class="vocab-word">make it on one's own</div>
+        <div class="vocab-pron">片語</div>
+        <div class="vocab-def">靠自己成功/生存。"make it" = 成功，"on one's own" = 獨自地。</div>
+        <div class="vocab-example">"I'm going to make it on my own."</div>
+      </div>
+
+      <div class="vocab-item">
+        <div class="vocab-word">real world</div>
+        <div class="vocab-pron">片語</div>
+        <div class="vocab-def">現實世界（相對於父母保護的環境）。Monica 對 Rachel 說的核心台詞。</div>
+        <div class="vocab-example">"Welcome to the real world."</div>
+      </div>
+
+      <div class="vocab-item">
+        <div class="vocab-word">settled</div>
+        <div class="vocab-pron">/ˈsetld/</div>
+        <div class="vocab-def">安定的、穩定的。常指婚姻或生活狀態穩定。</div>
+        <div class="vocab-example">"I just want to feel settled."</div>
+      </div>
+
+      <div class="vocab-item">
+        <div class="vocab-word">freaked out</div>
+        <div class="vocab-pron">片語</div>
+        <div class="vocab-def">非常緊張、驚慌失措（口語）。</div>
+        <div class="vocab-example">"She totally freaked out before the wedding."</div>
+      </div>
+
+      <div class="vocab-item">
+        <div class="vocab-word">cut up</div>
+        <div class="vocab-pron">片語動詞</div>
+        <div class="vocab-def">剪碎。"cut up credit cards" = 剪掉信用卡（象徵切斷依賴）。</div>
+        <div class="vocab-example">"Cut it up. Be your own person."</div>
+      </div>
+
+      <div class="vocab-item">
+        <div class="vocab-word">roommate</div>
+        <div class="vocab-pron">/ˈruːmmeɪt/</div>
+        <div class="vocab-def">室友。Rachel 成為 Monica 的室友，本集標題的由來。</div>
+        <div class="vocab-example">"Rachel is going to be my new roommate."</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scene by Scene -->
+  <div class="section" id="scenes">
+    <h2>🎬 分場景學習</h2>
+    <p style="color:#666; font-size:0.9rem; margin-bottom:1.5rem;">對照影片時間軸，每個場景都有學習重點和台詞解析。時間點為參考值，不同版本可能略有差異。</p>
+
+    <!-- Scene 1 -->
+    <div class="scene-card">
+      <div class="scene-header">
+        <span class="scene-time">00:00 – 03:30</span>
+        <span class="scene-title">☕ Central Perk 開場 — 六人組第一次同框</span>
+      </div>
+      <div class="scene-body">
+        <p class="scene-summary">
+          Chandler 在沙發上分享一個夢境，Phoebe、Joey、Monica 在場。Ross 走進來，神情落寞，透露和 Carol 的婚姻正在走向終點。這段對話建立了六個角色的基本個性和彼此的關係。
+        </p>
+
+        <div class="quote-card">
+          <div class="quote-text">"I just want to be married again."</div>
+          <div class="quote-who">— Ross Geller（約 02:40）</div>
+          <span class="tag">情感表達</span><span class="tag">want to + V</span>
+          <div class="quote-analysis">
+            <strong>文法：</strong>"want to + 原形動詞" 表達慾望或願望。"again" 放在句尾強調「再一次」，暗示他曾經擁有過。注意 Ross 說這句話的語調——語速慢、音調下沉，是表達悲傷的典型英語語調特徵。
+          </div>
+          <div class="quote-zh">我只是想再婚。</div>
+        </div>
+
+        <div class="quote-card">
+          <div class="quote-text">"Welcome to the real world. It sucks."</div>
+          <div class="quote-who">— Monica Geller（對 Rachel 說，約 06:10）</div>
+          <span class="tag">諷刺歡迎</span><span class="tag">省略主詞</span>
+          <div class="quote-analysis">
+            <strong>文法：</strong>"It sucks." 是完整的句子（主詞 + 動詞），"suck" 作動詞，口語意思是「很糟糕、很討厭」。後面 Monica 接著說 "You're gonna love it."（你會愛上它的），形成諷刺對比，是 Monica 式幽默的典型。
+          </div>
+          <div class="quote-zh">歡迎來到現實世界。現實很殘酷。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scene 2 -->
+    <div class="scene-card">
+      <div class="scene-header">
+        <span class="scene-time">03:30 – 08:00</span>
+        <span class="scene-title">👗 Rachel 穿婚紗出現</span>
+      </div>
+      <div class="scene-body">
+        <p class="scene-summary">
+          Rachel Green 穿著婚紗衝進 Central Perk，她剛從婚禮現場逃跑。她找到高中舊識 Monica，傾訴自己不願嫁給 Barry（即將成為她丈夫）的原因——她並不愛他，只是害怕一個人。這段對話充滿情緒化的英語表達，非常適合學習「說明原因」和「表達感受」。
+        </p>
+
+        <div class="quote-card">
+          <div class="quote-text">"Everything's going to be fine."</div>
+          <div class="quote-who">— Monica 安慰 Rachel（約 05:20）</div>
+          <span class="tag">未來進行</span><span class="tag">安慰用語</span>
+          <div class="quote-analysis">
+            <strong>文法：</strong>"be going to + 原形動詞" 表示對未來的預測或安排。"Everything" 作主詞，搭配 "is going to be"（縮讀為 "everything's going to be"）。這是英語安慰別人時非常常用的句型，語調要平穩上揚。
+          </div>
+          <div class="quote-zh">一切都會沒事的。</div>
+        </div>
+
+        <div class="quote-card">
+          <div class="quote-text">"I thought about what you said."</div>
+          <div class="quote-who">— Rachel（約 07:50）</div>
+          <span class="tag">過去式</span><span class="tag">think about 片語</span>
+          <div class="quote-analysis">
+            <strong>文法：</strong>"think about" = 思考、考慮某事。"thought" 是 "think" 的過去式（不規則變化：think → thought → thought）。"what you said" 是名詞子句作 "about" 的受詞，完整結構是：主詞 + 動詞 + 介系詞 + 名詞子句。
+          </div>
+          <div class="quote-zh">我想過你說的話了。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scene 3 -->
+    <div class="scene-card">
+      <div class="scene-header">
+        <span class="scene-time">10:00 – 14:30</span>
+        <span class="scene-title">🏠 Monica 的公寓 — Rachel 決定獨立</span>
+      </div>
+      <div class="scene-body">
+        <p class="scene-summary">
+          Rachel 搬進 Monica 的公寓，打電話給父親說明自己的決定。這是本集的情感高峰——Rachel 拒絕依賴父母，剪掉信用卡，宣告自己要靠自己生活。這段話語包含大量「表達決心」的英語句型。
+        </p>
+
+        <div class="quote-card">
+          <div class="quote-text">"I'm going to make it on my own."</div>
+          <div class="quote-who">— Rachel（約 13:00）</div>
+          <span class="tag">決心表達</span><span class="tag">make it 片語</span>
+          <div class="quote-analysis">
+            <strong>文法：</strong>"make it" = 成功、做到。"on one's own" = 靠自己、獨立地。"be going to" 在這裡表達強烈的意圖和決心，比 "will" 更強調是深思熟慮後的決定。整句可以替換為 "I'll succeed by myself."，但 "make it on my own" 更口語有力。
+          </div>
+          <div class="quote-zh">我要靠自己成功。</div>
+        </div>
+
+        <div class="quote-card">
+          <div class="quote-text">"Cut it up. It's the only way."</div>
+          <div class="quote-who">— Monica（勸 Rachel 剪信用卡，約 14:10）</div>
+          <span class="tag">祈使句</span><span class="tag">強調句型</span>
+          <div class="quote-analysis">
+            <strong>文法：</strong>"Cut it up" 是祈使句（命令/建議），動詞原形開頭，主詞 "you" 省略。"it's the only way" 用 "only" 強調唯一性，是表達強烈建議的常見句型。類似說法："That's the only option."、"There's no other way."
+          </div>
+          <div class="quote-zh">剪掉它。這是唯一的方法。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scene 4 -->
+    <div class="scene-card">
+      <div class="scene-header">
+        <span class="scene-time">16:00 – 22:00</span>
+        <span class="scene-title">🌙 結尾 — Ross 的心情轉折</span>
+      </div>
+      <div class="scene-body">
+        <p class="scene-summary">
+          Ross 和 Rachel 在 Monica 的公寓聊天，Ross 說出他離婚的心情，Rachel 也分享自己的感受。這段對話節奏較慢，兩人都在尋找新的人生方向。結尾 Ross 問 Rachel 要不要一起喝咖啡，暗示未來兩人的故事線。
+        </p>
+
+        <div class="quote-card">
+          <div class="quote-text">"It feels like everything's ending."</div>
+          <div class="quote-who">— Ross（約 17:30）</div>
+          <span class="tag">感受表達</span><span class="tag">feel like 片語</span>
+          <div class="quote-analysis">
+            <strong>文法：</strong>"feel like + 動名詞/名詞子句" 表達一種感覺或感受。"everything's ending" = "everything is ending"（現在進行式，強調正在發生的感覺）。這個句型日常非常實用：例如 "It feels like I've been here before."
+          </div>
+          <div class="quote-zh">感覺好像一切都在結束。</div>
+        </div>
+
+        <div class="quote-card">
+          <div class="quote-text">"You want to grab a coffee?"</div>
+          <div class="quote-who">— Ross（對 Rachel，約 21:20）</div>
+          <span class="tag">口語邀約</span><span class="tag">省略 Do you</span>
+          <div class="quote-analysis">
+            <strong>文法：</strong>完整的問句應是 "Do you want to grab a coffee?"，但口語中常省略 "Do you"，直接以 "You want to...?" 提問，語氣更輕鬆自然。"grab a coffee" = 去喝杯咖啡（grab 在口語中表示快速取得某物）。這種邀約方式在美式口語中非常普遍。
+          </div>
+          <div class="quote-zh">要去喝杯咖啡嗎？</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Listening Focus -->
+  <div class="section" id="listening">
+    <h2>🎧 聽力重點練習</h2>
+    <p style="color:#666; font-size:0.9rem; margin-bottom:1.2rem;">重看這幾個片段時，特別注意以下聽力現象。先不看字幕聽一遍，再開字幕確認。</p>
+
+    <div class="listen-item">
+      <div class="timestamp">約 00:45</div>
+      <div class="focus-title">連音：going to → "gonna"</div>
+      <div class="focus-desc">Chandler 說話很快，"going to" 幾乎聽不出兩個字，會縮讀成 "gonna"。這是美式英語最常見的連音現象之一。</div>
+      <div class="sound-tip">
+        慢速：going to [ˈɡoʊɪŋ tuː]<br>
+        快速口語：gonna [ˈɡʌnə]<br>
+        例句："It's gonna be okay." = "It is going to be okay."
+      </div>
+    </div>
+
+    <div class="listen-item">
+      <div class="timestamp">約 02:40</div>
+      <div class="focus-title">語調：Ross 的悲傷語氣</div>
+      <div class="focus-desc">注意 Ross 說 "I just want to be married again." 時，語調是下沉的（falling intonation），整句速度慢、音量低。英語用語調表達情緒——悲傷/失望通常是下沉語調，興奮/問句通常是上揚語調。</div>
+      <div class="sound-tip">
+        悲傷 → 語調下沉 ↘，語速慢<br>
+        興奮 → 語調上揚 ↗，語速快<br>
+        跟讀練習：模仿 Ross 說這句話的語氣，刻意放慢
+      </div>
+    </div>
+
+    <div class="listen-item">
+      <div class="timestamp">約 05:20</div>
+      <div class="focus-title">縮讀：everything's / that's / it's</div>
+      <div class="focus-desc">Monica 快速安慰 Rachel 時，說了很多縮讀形式。注意 "everything's"（everything is）、"that's"（that is）、"it's"（it is）。這些縮讀讓句子聽起來更流暢，是你自己說話時也要練習的。</div>
+      <div class="sound-tip">
+        is → 's（接在名詞後縮讀）<br>
+        "Everything's fine." "That's okay." "It's going to be alright."<br>
+        練習：把三句話連成一口氣說
+      </div>
+    </div>
+
+    <div class="listen-item">
+      <div class="timestamp">約 13:00</div>
+      <div class="focus-title">強調語氣：Rachel 的決心</div>
+      <div class="focus-desc">Rachel 說話越來越有力量，注意 "on my OWN"（own 重音加強）這種強調用法。英語口語中，想強調某個字時會加重音、拉長發音。</div>
+      <div class="sound-tip">
+        正常：on my own<br>
+        強調：on my <strong>OWN</strong>（own 音量變大、時間拉長）<br>
+        練習：大聲說 "I'll do it on my OWN!"，感受重音的位置
+      </div>
+    </div>
+
+    <div class="listen-item">
+      <div class="timestamp">約 21:20</div>
+      <div class="focus-title">省略 Do you：口語問句</div>
+      <div class="focus-desc">Ross 說 "You want to grab a coffee?" 省略了 "Do you"。這在美式口語中非常常見，但在寫作或正式場合不建議使用。聽懂這種省略是聽力的重要關卡。</div>
+      <div class="sound-tip">
+        書面：Do you want to grab a coffee?<br>
+        口語：You want to grab a coffee? ↗（語調上揚表示問句）<br>
+        其他例子："You coming?" = "Are you coming?"
+      </div>
+    </div>
+  </div>
+
+  <!-- Grammar Focus -->
+  <div class="section" id="grammar">
+    <h2>📝 本集文法焦點</h2>
+
+    <div class="grammar-box">
+      <h4>1. 過去式 vs 現在完成式：說明過去事件</h4>
+      <p>
+        Ross 和 Rachel 都在敘述「剛剛發生的事」。英語中，敘述已完成的過去動作用<strong>簡單過去式</strong>；強調「對現在有影響」的過去事件用<strong>現在完成式</strong>。
+      </p>
+      <div class="example-row">
+        <div class="example-good">
+          ✅ 簡單過去式<br>
+          "She <strong>left</strong> me for another woman."（她離開了我）<br>
+          "I <strong>called</strong> off the wedding."（我取消了婚禮）
+        </div>
+        <div class="example-good">
+          ✅ 現在完成式<br>
+          "I <strong>have been</strong> married."（我結過婚）<br>
+          "She <strong>has decided</strong> to leave."（她已決定離開）
+        </div>
+      </div>
+    </div>
+
+    <div class="grammar-box">
+      <h4>2. be going to vs will：表達未來</h4>
+      <p>
+        Rachel 宣告獨立時用了 "I'm going to make it"，而不是 "I will make it"。兩者都可表未來，但有細微差別：
+      </p>
+      <div class="example-row">
+        <div class="example-good">
+          ✅ be going to（計劃好的、有根據的預測）<br>
+          "I'm going to make it on my own."<br>
+          "It's going to rain."（看到烏雲，有根據）
+        </div>
+        <div class="example-good">
+          ✅ will（當下決定、不確定的預測）<br>
+          "I'll help you."（此刻決定）<br>
+          "It will be okay."（安慰，不確定但樂觀）
+        </div>
+      </div>
+    </div>
+
+    <div class="grammar-box">
+      <h4>3. want to / need to / have to：表達意願與義務</h4>
+      <p>
+        本集出現大量這三個句型，用來表達角色的想法和處境：
+      </p>
+      <div class="example-row">
+        <div class="example-good">
+          ✅ want to（想要）<br>
+          "I just want to be married again."<br>
+          "I want to be on my own."
+        </div>
+        <div class="example-good">
+          ✅ need to / have to（需要/必須）<br>
+          "I need to figure this out."<br>
+          "You have to cut it up."
+        </div>
+      </div>
+    </div>
+
+    <div class="grammar-box">
+      <h4>4. 感嘆句與情緒表達</h4>
+      <p>
+        六個角色的對話充滿情緒，英語透過不同方式表達強烈情感：
+      </p>
+      <div class="example-row">
+        <div class="example-good">
+          ✅ 常見情緒表達<br>
+          "Oh my God!" — 驚訝<br>
+          "Are you kidding me?" — 不敢置信<br>
+          "That's insane!" — 誇張反應<br>
+          "I can't believe this." — 震驚
+        </div>
+        <div class="example-good">
+          ✅ 用副詞加強語氣<br>
+          "That's <strong>so</strong> wrong."<br>
+          "I'm <strong>absolutely</strong> fine."<br>
+          "This is <strong>totally</strong> crazy."<br>
+          "I <strong>just</strong> want to go home."
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quiz -->
+  <div class="section" id="quiz">
+    <h2>✏️ 本集練習題</h2>
+
+    <h3 style="color:var(--purple); margin-bottom:1rem;">Part A：文法選擇題</h3>
+    <p style="color:#666; font-size:0.9rem; margin-bottom:1rem;">根據第一集的情境，選出正確答案。</p>
+
+    <div class="score-board">
+      得分：<span id="score">0</span> / <span id="total">0</span>
+    </div>
+
+    <div id="quiz-container"></div>
+
+    <button class="reset-btn" onclick="resetQuiz()" style="margin-bottom:2rem;">🔄 重新練習</button>
+
+    <!-- Fill in blank -->
+    <h3 style="color:var(--purple); margin: 1.5rem 0 1rem;">Part B：填空練習</h3>
+    <p style="color:#666; font-size:0.9rem; margin-bottom:1rem;">根據提示，填入正確的單字或片語完成句子。</p>
+
+    <div class="fill-card">
+      <div class="fill-sentence">"I just want to be ___ again." — Ross 說他想再次結婚</div>
+      <input class="fill-input" id="fill-1" type="text" placeholder="輸入答案">
+      <button class="fill-check-btn" onclick="checkFill(1, 'married')">確認</button>
+      <div class="hint-text">提示：形容詞，表示「已婚的」狀態</div>
+      <div class="fill-feedback" id="fill-feedback-1"></div>
+    </div>
+
+    <div class="fill-card">
+      <div class="fill-sentence">"Welcome to the real world. It ___." — Monica 說現實世界很糟糕</div>
+      <input class="fill-input" id="fill-2" type="text" placeholder="輸入答案">
+      <button class="fill-check-btn" onclick="checkFill(2, 'sucks')">確認</button>
+      <div class="hint-text">提示：口語動詞，意思是「很糟糕」</div>
+      <div class="fill-feedback" id="fill-feedback-2"></div>
+    </div>
+
+    <div class="fill-card">
+      <div class="fill-sentence">"I'm ___ to make it on my own." — Rachel 宣告她的計劃</div>
+      <input class="fill-input" id="fill-3" type="text" placeholder="輸入答案">
+      <button class="fill-check-btn" onclick="checkFill(3, 'going')">確認</button>
+      <div class="hint-text">提示：be ___ to + V，表達計劃好的未來</div>
+      <div class="fill-feedback" id="fill-feedback-3"></div>
+    </div>
+
+    <div class="fill-card">
+      <div class="fill-sentence">"It feels ___ everything's ending." — Ross 描述他的感受</div>
+      <input class="fill-input" id="fill-4" type="text" placeholder="輸入答案">
+      <button class="fill-check-btn" onclick="checkFill(4, 'like')">確認</button>
+      <div class="hint-text">提示：feel ___ + 子句，表達感受</div>
+      <div class="fill-feedback" id="fill-feedback-4"></div>
+    </div>
+
+    <div class="fill-card">
+      <div class="fill-sentence">"You want to ___ a coffee?" — Ross 邀請 Rachel</div>
+      <input class="fill-input" id="fill-5" type="text" placeholder="輸入答案">
+      <button class="fill-check-btn" onclick="checkFill(5, 'grab')">確認</button>
+      <div class="hint-text">提示：口語動詞，意思是「快速取得、順便喝一杯」</div>
+      <div class="fill-feedback" id="fill-feedback-5"></div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>本網站為英語學習輔助工具，內容僅供教育參考。Friends 版權屬於 Warner Bros. Entertainment Inc.</p>
+  <p style="margin-top:0.5rem;"><a href="index.html" style="color:var(--yellow);">← 回到 Friends 英語學習首頁</a></p>
+</footer>
+
+<script>
+  const quizData = [
+    {
+      context: "Rachel 想說「我要靠自己成功」，用哪個句型表達已計劃好的決心？",
+      sentence: '"I ___ going to make it on my own."',
+      options: ["will", "am", "was", "be"],
+      answer: 1,
+      explanation: '"be going to" 表示已計劃好的未來意圖。主詞是 "I"，所以用 "am going to"，強調她是深思熟慮後的決定，不是當下衝動。'
+    },
+    {
+      context: "Ross 說他剛離婚，用哪個時態最自然？",
+      sentence: '"My wife ___ me for another woman."',
+      options: ["leave", "left", "has left", "is leaving"],
+      answer: 1,
+      explanation: '描述過去發生的具體事件，用簡單過去式 "left"（leave 的過去式）。如果想強調對現在的影響，可用 "has left"，但 Ross 是陳述已發生的事實，所以 "left" 更自然。'
+    },
+    {
+      context: "Monica 安慰 Rachel，想說「一切都會好的」：",
+      sentence: '"Everything ___ going to be fine."',
+      options: ["is", "are", "was", "were"],
+      answer: 0,
+      explanation: '"Everything" 是單數名詞（雖然意思是「所有事情」），動詞要用單數 "is"。縮讀為 "Everything\'s going to be fine."，是口語中最常見的安慰用語。'
+    },
+    {
+      context: "Rachel 說「我想過你說的話了」，用哪個時態？",
+      sentence: '"I ___ about what you said."',
+      options: ["think", "thinking", "thought", "have think"],
+      answer: 2,
+      explanation: '"think" 的過去式是不規則變化 "thought"。"think about something" = 思考某事。整句 "I thought about what you said." 用簡單過去式，表示她在過去某個時間點思考過這件事。'
+    },
+    {
+      context: "Ross 問 Rachel 要不要一起喝咖啡，口語省略 Do you 的方式：",
+      sentence: '"___ want to grab a coffee?"',
+      options: ["Do you", "You", "Would you", "Are you"],
+      answer: 1,
+      explanation: '口語中常省略 "Do you"，直接說 "You want to...?" 語調上揚就能表示問句。這是美式口語的常見習慣，書面或正式場合應使用 "Do you want to...?"'
+    }
+  ];
+
+  let score = 0;
+  let answered = [];
+
+  function renderQuiz() {
+    answered = new Array(quizData.length).fill(false);
+    score = 0;
+    document.getElementById('score').textContent = 0;
+    document.getElementById('total').textContent = quizData.length;
+
+    const container = document.getElementById('quiz-container');
+    container.innerHTML = '';
+
+    quizData.forEach((q, idx) => {
+      const div = document.createElement('div');
+      div.className = 'quiz-question';
+      div.innerHTML = `
+        <div class="quiz-context">${q.context}</div>
+        <div class="quiz-sentence"><strong>Q${idx + 1}.</strong> ${q.sentence}</div>
+        <div class="options">
+          ${q.options.map((opt, i) => `
+            <button class="option-btn" onclick="checkAnswer(${idx}, ${i}, this)" id="q${idx}-opt${i}">
+              ${String.fromCharCode(65 + i)}. ${opt}
+            </button>
+          `).join('')}
+        </div>
+        <div class="feedback" id="feedback-${idx}"></div>
+      `;
+      container.appendChild(div);
+    });
+  }
+
+  function checkAnswer(qIdx, optIdx, btn) {
+    if (answered[qIdx]) return;
+    answered[qIdx] = true;
+    const q = quizData[qIdx];
+    const feedback = document.getElementById(`feedback-${qIdx}`);
+    quizData[qIdx].options.forEach((_, i) => {
+      const b = document.getElementById(`q${qIdx}-opt${i}`);
+      if (b) b.disabled = true;
+    });
+
+    if (optIdx === q.answer) {
+      btn.classList.add('correct');
+      feedback.className = 'feedback correct show';
+      feedback.innerHTML = '✅ 正確！' + q.explanation;
+      score++;
+    } else {
+      btn.classList.add('wrong');
+      const correctBtn = document.getElementById(`q${qIdx}-opt${q.answer}`);
+      if (correctBtn) correctBtn.classList.add('correct');
+      feedback.className = 'feedback wrong show';
+      feedback.innerHTML = '❌ 答錯了。' + q.explanation;
+    }
+    document.getElementById('score').textContent = score;
+  }
+
+  function resetQuiz() { renderQuiz(); }
+
+  function checkFill(num, correct) {
+    const input = document.getElementById(`fill-${num}`);
+    const feedback = document.getElementById(`fill-feedback-${num}`);
+    const val = input.value.trim().toLowerCase();
+
+    input.classList.remove('correct', 'wrong');
+    feedback.classList.remove('show');
+
+    if (val === correct.toLowerCase()) {
+      input.classList.add('correct');
+      feedback.className = 'fill-feedback show';
+      feedback.style.color = '#2E7D32';
+      feedback.innerHTML = '✅ 正確！';
+    } else if (val === '') {
+      feedback.className = 'fill-feedback show';
+      feedback.style.color = '#888';
+      feedback.innerHTML = '請輸入答案。';
+    } else {
+      input.classList.add('wrong');
+      feedback.className = 'fill-feedback show';
+      feedback.style.color = '#C62828';
+      feedback.innerHTML = `❌ 再試一次。提示：答案是 "${correct}"`;
+    }
+  }
+
+  renderQuiz();
+</script>
+
+</body>
+</html>
